@@ -6,23 +6,17 @@ data Entry = Entry {
 }
 
 parseFasta :: [String] -> [Entry]
-parseFasta [] = []
-parseFasta (x:xs) =
-    let 
-        result = parseHelper xs
-        dna  = fst result
-        rest = snd result
-        entry = Entry (tail x) dna
-    in
-        entry : parseFasta rest
+parseFasta arr = map convertEntry $ tail (fastaHelper arr)
 
-parseHelper :: [String] -> (String, [String])
-parseHelper [] = ([], [])
-parseHelper (x:xs)
-    | head x == '>' = ([], x:xs)
-    | otherwise =
-        let acc = fst rest
-        in (x ++ acc, snd rest)
-    where rest = parseHelper xs
+fastaHelper :: [String] -> [[String]]
+fastaHelper [] = [[]]
+fastaHelper (x:xs)
+    | head x == '>' = [] : (x : hRes) : tRes
+    | otherwise = (x : hRes) : tRes
+    where 
+        result = fastaHelper xs
+        hRes = head result
+        tRes = tail result
 
-
+convertEntry :: [String] -> Entry
+convertEntry (x:xs) = Entry (tail x) (concat xs)
