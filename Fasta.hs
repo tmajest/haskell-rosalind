@@ -1,4 +1,4 @@
-module Fasta (Entry) where
+module Fasta (Entry(..), parseFasta) where
 
 data Entry = Entry {
     identifier :: String, 
