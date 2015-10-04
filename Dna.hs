@@ -1,5 +1,6 @@
+module Dna (countBases) where
 
-countBases :: String -> [Integer]
+countBases :: String -> [Int]
 countBases [] = [0, 0, 0, 0]
 countBases (x:xs) 
     | x == 'A' = [rest !! 0 + 1, rest !! 1, rest !! 2, rest !! 3]
