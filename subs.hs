@@ -1,3 +1,4 @@
+import Strings
 
 --
 -- |Finds all the indexes where string s is present in string t.
@@ -13,4 +14,4 @@ main = do
     t <- getLine
 
     let indexes = subs s t 1
-    putStrLn $ unwords $ map show indexes
+    putStrLn $ listToString indexes

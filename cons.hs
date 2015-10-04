@@ -1,5 +1,6 @@
 import Fasta
 import Dna
+import Strings
 
 --
 -- |Transpose the given matrix.
@@ -30,7 +31,7 @@ consensus (x:xs) = maxBase : consensus xs
 createProfile :: [[Int]] -> [String]
 createProfile x = map (uncurry (++)) zipped
     where
-        strings = map (\a -> unwords $ map show a) (transpose x)
+        strings = map listToString (transpose x)
         zipped = zip ["A: ", "C: ", "G: ", "T: "] strings
 
 main = do

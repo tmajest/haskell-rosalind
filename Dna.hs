@@ -1,5 +1,7 @@
 module Dna (countBases) where
 
+import Strings
+
 countBases :: String -> [Int]
 countBases [] = [0, 0, 0, 0]
 countBases (x:xs) 
@@ -12,4 +14,4 @@ countBases (x:xs)
 main = do
     dna <- getLine 
     let baseCount = countBases dna
-    putStrLn $ unwords (map show baseCount)
+    putStrLn $ listToString baseCount
